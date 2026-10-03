@@ -6,7 +6,7 @@
 
     <application
         android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="R360 GB"
         android:usesCleartextTraffic="false"
         android:theme="@style/AppTheme">
