@@ -1,4 +1,4 @@
-name: Build R360 GB AAB
+name: Build R360 GB Android
 
 on:
   workflow_dispatch:
@@ -35,9 +35,19 @@ jobs:
       - name: Build release Android App Bundle
         run: gradle :app:bundleRelease --stacktrace
 
+      - name: Build installable test APK
+        run: gradle :app:assembleDebug --stacktrace
+
       - name: Upload AAB
         uses: actions/upload-artifact@v4
         with:
           name: r360gb-aab
           path: app/build/outputs/bundle/release/*.aab
+          if-no-files-found: error
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: r360gb-apk
+          path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
